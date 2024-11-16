@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { logo } from '../utils/imgs.ts'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faArrowLeft, faBook, faBriefcase, faCalendar, faCaretDown, faCaretRight, faCaretUp, faHeart, faHome, faSearch, faUser } from '@fortawesome/free-solid-svg-icons';
+import {faArrowLeft, faBook, faBriefcase, faCalendar, faCaretDown, faCaretRight, faCaretUp, faClose, faHeart, faHome, faSearch, faUser } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -16,17 +16,23 @@ export default function Header({}: Props) {
   return (
     <div className='border-b-2 border-gray-100 p-5 justify-between  w-full flex  '>
         <div className='flex items-center justify-center gap-6 '>
-            <img src={logo} className='w-[106px] h-[32px]' alt="logo pic" />
-            <div className='relative'>
+            <img src={logo} className='w-[65px] h-[20px] md:w-[106px] md:h-[32px]' alt="logo pic" />
+            <div className='md:relative'>
            <button onClick={()=>{setopenedMenu(!openedMenu)}} className='mt-1 flex justify-center  items-center text-[18px] gap-1'>
             Explore
             <FontAwesomeIcon  className={`${openedMenu ? 'relative top-1' : ''}`} icon={openedMenu ? faCaretUp:faCaretDown}  /></button>
 
             {/* ---------------------modal window---------- */}
-            <div className={`${openedMenu ? ' block' : 'opacity-0  hidden'}   ease-in duration-100 absolute top-11 h-fit w-[300px] z-30 bg-white p-5 rounded-sm border border-secondary overflow-hidden`}>
+            <div className={`${openedMenu ? ' block' : 'opacity-0  hidden'}  w-screen h-screen  ease-in duration-100 absolute left-0 -top-0 md:top-11 md:h-fit md:w-[300px] z-30 bg-white p-5 rounded-sm border border-secondary overflow-hidden`}>
                 <div className='relative'>
                       {/* --------------------select option modal  ---------------------- */}
                  <div className={`${!clickedOption ? 'relative' : 'absolute'} top-0  ease-linear duration-300 ${clickedOption ? '-translate-x-[110%]' : 'translate-x-0' } `}>
+                 
+                            <div className='flex justify-between items-center md:hidden mb-10'>
+                                <p className='text-[28px]'>Explore</p>
+                                <FontAwesomeIcon onClick={()=>{setopenedMenu(!openedMenu)}} className=' cursor-pointer text-[21px]' icon={faClose} />
+                            </div>
+                          
                             {/* title */}
                             <div className='flex justify-between items-center'>
                                 <p className='text-[18px]'>Services</p>
@@ -92,9 +98,10 @@ export default function Header({}: Props) {
                                         <FontAwesomeIcon className='group-hover:text-black ' icon={faCaretRight} />
                                 </div>
                             </div>
+                 
                  </div>
                  {/* --------------------Business modal  ---------------------- */}
-                 <div className={`${clickedOption ? 'relative' : 'absolute'} -top-0 ease-linear duration-300    ${clickedOption ? 'translate-x-0' : 'translate-x-[155%]' } `}>
+                 <div className={`${clickedOption ? 'relative' : 'absolute'} -top-0 ease-linear duration-300    ${clickedOption ? 'translate-x-0' : 'translate-x-[255%]' } `}>
                     {/* back option */}
                     <div className='p-2'>
                         <div className='flex items-center gap-4 '>
